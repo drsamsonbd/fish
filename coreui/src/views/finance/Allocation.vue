@@ -40,7 +40,8 @@ export default {
   name: 'Allocation',
   data: () => {
     return {
-        form:{ code:'', details: '',},
+        objek:{ code:'', details: '',},
+        statuses: [],
         message: '',
         dismissSecs: 5,
         dismissCountDown: 0,
@@ -55,12 +56,10 @@ export default {
     store() {
         let self = this;
         axios.post(  this.$apiAdress + '/api/finance/store?token=' + localStorage.getItem("api_token"),
-          { code: self.code, 
-            details: self.details, 
-          }
+          self.objek
         )
         .then(function (response) {
-            self.code= '';
+            self.objek= {code:'', details: '',};
             self.message = 'Successfully created object.';
             self.showAlert();
         }).catch(function (error) {

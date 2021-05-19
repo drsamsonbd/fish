@@ -72,11 +72,21 @@ Route::group(['middleware' => 'api'], function ($router) {
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
 
             Route::get('/file/download',    'MediaController@fileDownload');
+
+
+            
         });
 
         Route::resource('roles',        'RolesController');
         Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
+
+        Route::prefix('finance')->group(function () { 
+            Route::get('/',             'MenuElementController@index')->name('finance.index');
+            Route::post('/store',      'FinanceCategoryController@moveUp')->name('finance.store');
+        });
+
+
     });
 
     Route::group(['middleware' => 'finance'], function ($router) {
