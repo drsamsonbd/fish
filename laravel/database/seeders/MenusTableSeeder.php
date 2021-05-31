@@ -148,6 +148,7 @@ class MenusTableSeeder extends Seeder
         $this->beginDropdown('user,admin', 'Kewangan',      '/finance', 'cil-calculator');
         $this->insertLink('finance,admin', 'Utama',         '/finance');
         $this->insertLink('finance,admin', 'Peruntukan',    '/allocation');
+        $this->insertLink('finance,admin', 'Ketegori',    '/category');
         $this->endDropdown();
         $this->insertTitle('user,admin', 'Theme');
         $this->insertLink('admin', 'Colors', '/colors', 'cil-drop');

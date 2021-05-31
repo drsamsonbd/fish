@@ -15,12 +15,12 @@
           </CAlert>
           <CForm>
             <CCardBody>
-              <CInput
-                label="Kod Objek" type="text" placeholder="Kod Objek" v-model="code"
+              <CInput 
+                label="Kod Objek" type="text" placeholder="Kod Objek" v-model="form.code"
               
               />
               <CInput
-               label="Dekripsi" type="text" placeholder="Deskripsi" v-model="details"
+               label="Dekripsi" type="text" placeholder="Deskripsi" v-model="form.details"
               />
             </CCardBody>
             <CCardFooter>
@@ -40,7 +40,8 @@ export default {
   name: 'Allocation',
   data: () => {
     return {
-        objek:{ code:'', details: '',},
+        form:{code:'', 
+        details: ''},
         statuses: [],
         message: '',
         dismissSecs: 5,
@@ -56,10 +57,9 @@ export default {
     store() {
         let self = this;
         axios.post(  this.$apiAdress + '/api/finance/store?token=' + localStorage.getItem("api_token"),
-          self.objek
+          self.form
         )
         .then(function (response) {
-            self.objek= {code:'', details: '',};
             self.message = 'Successfully created object.';
             self.showAlert();
         }).catch(function (error) {
@@ -84,15 +84,6 @@ export default {
       this.dismissCountDown = this.dismissSecs
     },
   },
-    mounted: function(){
-    let self = this;
-    axios.get(  this.$apiAdress + '/api/finance/create?token=' + localStorage.getItem("api_token"))
-    .then(function (response) {
-        self.statuses = response.data;
-    }).catch(function (error) {
-        console.log(error);
-        self.$router.push({ path: 'login' });
-    });
-  }
+
 }
 </script>

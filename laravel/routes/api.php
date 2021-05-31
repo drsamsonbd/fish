@@ -24,7 +24,9 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::resource('notes', 'NotesController');
 
     Route::resource('resource/{table}/resource', 'ResourceController');
-    
+   
+
+       
     Route::group(['middleware' => 'admin'], function ($router) {
 
         Route::resource('mail',        'MailController');
@@ -81,18 +83,16 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
 
-        Route::prefix('finance')->group(function () { 
-            Route::get('/',             'MenuElementController@index')->name('finance.index');
-            Route::post('/store',      'FinanceCategoryController@moveUp')->name('finance.store');
-        });
+
+      
 
 
     });
 
     Route::group(['middleware' => 'finance'], function ($router) {
         Route::prefix('finance')->group(function () { 
-        Route::get('/',             'MenuElementController@index')->name('finance.index');
-        Route::post('/store',      'FinanceCategoryController@moveUp')->name('finance.store');
+        Route::get('/',             'FinanceCategoryController@index')->name('finance.index');
+        Route::post('/store',      'FinanceCategoryController@store')->name('finance.store');
     });
     });
 });

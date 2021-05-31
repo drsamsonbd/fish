@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FinanceCategory;
-
+use Illuminate\Support\Facades\DB;
 class FinanceCategoryController extends Controller
 {
     /**
@@ -43,13 +43,13 @@ class FinanceCategoryController extends Controller
      */
     public function store(Request $request){
         
-            $validateData = $request->validate([
+            $request->validate([
                 'code'=>'required|unique:finance_category|min:3',
                 'details'=>'required|min:3'
             ]);
             $financeCategory = new FinanceCategory;
-            $financeCategory->code = $request->input('code');
-            $financeCategory->details = $request->input('details');;
+            $financeCategory->code = $request->code;
+            $financeCategory->details = $request->details;;
             $financeCategory->save();
             return response()->json( ['status' => 'success'] );
     }

@@ -40,6 +40,7 @@ export default {
     return {
         name: '',
         email: '',
+        roles: '',
         showMessage: false,
         message: '',
         dismissSecs: 7,

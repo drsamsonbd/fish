@@ -107,6 +107,7 @@ const Media = () => import('@/views/media/Media')
 //Finance
 const IndexFinance = () => import('@/views/finance/Index')
 const Allocation = () => import('@/views/finance/Allocation')
+const Category = () => import('@/views/finance/Category')
 
 Vue.use(Router)
 
@@ -574,6 +575,11 @@ function configRoutes () {
               path: '/allocation',
               name: 'Peruntukan',
               component: Allocation
+            },
+            {
+              path: '/category',
+              name: 'Peruntukan',
+              component: Category
             },
           ]
     },

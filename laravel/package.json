@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.19.0",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.6.0",
         "cropperjs": "^1.5.6",
         "cross-env": "^5.1",
         "jquery": "^3.2",
@@ -21,7 +21,12 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "7.*",
-        "vue": "^2.5.17",
+        "vue": "^2.6.10",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "bootstrap-vue": "^2.21.2",
+        "noty": "^3.2.0-beta-deprecated",
+        "vue-sweetalert2": "^4.3.1"
     }
 }
